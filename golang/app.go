@@ -25,6 +25,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/zenazn/goji"
 	"github.com/zenazn/goji/web"
+	"github.com/pkg/profile"
 )
 
 var (
@@ -787,7 +788,7 @@ func postAdminBanned(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-    fmt.Println("Hellow World!")
+    defer profile.Start(profile.MemProfile).Stop()
 
 	host := os.Getenv("ISUCONP_DB_HOST")
 	if host == "" {
